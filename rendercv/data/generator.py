@@ -53,8 +53,8 @@ def create_a_sample_data_model(
             f' The provided theme is "{theme}".'
         )
 
-     # Select the appropriate sample content file based on theme suffix
-    if theme.endswith("_cover_letter"):
+    # Select the appropriate sample content file based on theme suffix
+    if theme.endswith("coverletter"):
         sample_content = pathlib.Path(__file__).parent / "sample_cover_letter.yaml"
     else:
         sample_content = pathlib.Path(__file__).parent / "sample_content.yaml"

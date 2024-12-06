@@ -22,7 +22,7 @@ cv:
       - "John Doe"
 
 design:
-  theme: engineeringCoverLetter
+  theme: engineeringcoverletter
 
 
 locale_catalog:

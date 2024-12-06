@@ -13,7 +13,7 @@ from rendercv.themes.common_options import (
 )
 
 
-class EntryAreaMarginsForEngineeringresumes(EntryAreaMargins):
+class EntryAreaMarginsForengineeringcoverletter(EntryAreaMargins):
     """This class is a data model for the entry area margins."""
 
     left_and_right: LaTeXDimension = pydantic.Field(
@@ -23,7 +23,7 @@ class EntryAreaMarginsForEngineeringresumes(EntryAreaMargins):
     )
 
 
-class HighlightsAreaMarginsForEngineeringresumes(HighlightsAreaMargins):
+class HighlightsAreaMarginsForengineeringcoverletter(HighlightsAreaMargins):
     """This class is a data model for the highlights area margins."""
 
     top: LaTeXDimension = pydantic.Field(
@@ -45,7 +45,7 @@ class HighlightsAreaMarginsForEngineeringresumes(HighlightsAreaMargins):
     )
 
 
-class HeaderMarginsForEngineeringresumes(HeaderMargins):
+class HeaderMarginsForengineeringcoverletter(HeaderMargins):
     """This class is a data model for the header margins."""
 
     vertical_between_name_and_connections: LaTeXDimension = pydantic.Field(
@@ -74,32 +74,32 @@ class HeaderMarginsForEngineeringresumes(HeaderMargins):
     )
 
 
-class MarginsForEngineeringresumes(Margins):
+class MarginsForengineeringcoverletter(Margins):
     """This class is a data model for the margins."""
 
-    entry_area: EntryAreaMarginsForEngineeringresumes = pydantic.Field(
-        default=EntryAreaMarginsForEngineeringresumes(),
+    entry_area: EntryAreaMarginsForengineeringcoverletter = pydantic.Field(
+        default=EntryAreaMarginsForengineeringcoverletter(),
         title="Entry Area Margins",
         description="Entry area margins.",
     )
-    highlights_area: HighlightsAreaMarginsForEngineeringresumes = pydantic.Field(
-        default=HighlightsAreaMarginsForEngineeringresumes(),
+    highlights_area: HighlightsAreaMarginsForengineeringcoverletter = pydantic.Field(
+        default=HighlightsAreaMarginsForengineeringcoverletter(),
         title="Highlights Area Margins",
         description="Highlights area margins.",
     )
-    header: HeaderMarginsForEngineeringresumes = pydantic.Field(
-        default=HeaderMarginsForEngineeringresumes(),
+    header: HeaderMarginsForengineeringcoverletter = pydantic.Field(
+        default=HeaderMarginsForengineeringcoverletter(),
         title="Header Margins",
         description="Header margins.",
     )
 
 
-class EngineeringcoverletterThemeOptions(ThemeOptions):
-    """This class is the data model of the theme options for the `engineeringresumes`
+class engineeringcoverletterThemeOptions(ThemeOptions):
+    """This class is the data model of the theme options for the `engineeringcoverletter`
     theme.
     """
 
-    theme: Literal["engineeringCoverLetter"]
+    theme: Literal["engineeringcoverletter"]
     font: Literal[
         "Latin Modern Serif",
         "Latin Modern Sans Serif",
@@ -178,8 +178,8 @@ class EngineeringcoverletterThemeOptions(ThemeOptions):
             " (like phone, email, and website). The default value is false."
         ),
     )
-    margins: MarginsForEngineeringresumes = pydantic.Field(
-        default=MarginsForEngineeringresumes(),
+    margins: MarginsForengineeringcoverletter = pydantic.Field(
+        default=MarginsForengineeringcoverletter(),
         title="Margins",
         description="Page, section title, entry field, and highlights field margins.",
     )

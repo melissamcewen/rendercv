@@ -15,6 +15,7 @@ from ...themes import (
     EngineeringresumesThemeOptions,
     ModerncvThemeOptions,
     Sb2novThemeOptions,
+    engineeringcoverletterThemeOptions,
 )
 from . import entry_types
 from .base import RenderCVBaseModelWithoutExtraKeys
@@ -151,7 +152,8 @@ RenderCVBuiltinDesign = Annotated[
     ClassicThemeOptions
     | ModerncvThemeOptions
     | Sb2novThemeOptions
-    | EngineeringresumesThemeOptions,
+    | EngineeringresumesThemeOptions
+    | engineeringcoverletterThemeOptions,
     pydantic.Field(discriminator="theme"),
 ]
 
@@ -176,6 +178,7 @@ available_theme_options = {
     "moderncv": ModerncvThemeOptions,
     "sb2nov": Sb2novThemeOptions,
     "engineeringresumes": EngineeringresumesThemeOptions,
+    "engineeringcoverletter": engineeringcoverletterThemeOptions,
 }
 
 available_themes = list(available_theme_options.keys())
