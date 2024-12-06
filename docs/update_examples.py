@@ -24,19 +24,30 @@ def generate_examples():
     os.chdir(examples_directory_path)
     themes = data.available_themes
     for theme in themes:
-        cli.cli_command_new(
-            "John Doe",
-            theme,
-            dont_create_theme_source_files=True,
-            dont_create_markdown_source_files=True,
-        )
-        yaml_file_path = examples_directory_path / "John_Doe_CV.yaml"
-
-        # Rename John_Doe_CV.yaml
-        proper_theme_name = theme.capitalize() + "Theme"
-        new_yaml_file_path = (
-            examples_directory_path / f"John_Doe_{proper_theme_name}_CV.yaml"
-        )
+        if theme.endswith("coverletter"):
+            # Copy from data/sample_cover_letter.yaml to examples directory
+            sample_cover_letter_path = pathlib.Path(__file__).parent / "data/sample_cover_letter.yaml"
+            shutil.copy(sample_cover_letter_path, examples_directory_path)
+            yaml_file_path = examples_directory_path / "sample_cover_letter.yaml"
+            # Rename John_Doe_CV.yaml
+            proper_theme_name = theme.capitalize() + "Theme"
+            new_yaml_file_path = (
+                examples_directory_path / f"John_Doe_{proper_theme_name}_coverletter.yaml"
+                )
+        else:
+            cli.cli_command_new(
+                "John Doe",
+                theme,
+                dont_create_theme_source_files=True
+                #            dont_create_markdown_source_files=True,
+            )
+            yaml_file_path = examples_directory_path / "John_Doe_CV.yaml"
+            # Rename John_Doe_CV.yaml
+            proper_theme_name = theme.capitalize() + "Theme"
+            new_yaml_file_path = (
+                examples_directory_path / f"John_Doe_{proper_theme_name}_CV.yaml"
+                )
+            
         if new_yaml_file_path.exists():
             new_yaml_file_path.unlink()
         yaml_file_path.rename(new_yaml_file_path)
@@ -50,15 +61,16 @@ def generate_examples():
         )
 
         # Move PDF file to examples directory
-        new_pdf_file_path = examples_directory_path / f"{yaml_file_path.stem}.pdf"
+        new_pdf_file_path = examples_directory_path / \
+            f"{yaml_file_path.stem}.pdf"
         if new_pdf_file_path.exists():
             new_pdf_file_path.unlink()
         output_pdf_file.rename(new_pdf_file_path)
 
         # Remove rendercv_output directory
-        rendercv_output_directory = examples_directory_path / "rendercv_output"
+        # rendercv_output_directory = examples_directory_path / "rendercv_output"
 
-        shutil.rmtree(rendercv_output_directory)
+        # shutil.rmtree(rendercv_output_directory)
 
         # Convert first page of PDF to image
         png_file_paths = renderer.render_pngs_from_pdf(new_pdf_file_path)
